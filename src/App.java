@@ -21,5 +21,13 @@ public class App {
 
         Bank bank = new Bank(valueRegularly,intrestRate,Duration,taxValue,interestRise, timeToExpire);
 
+
+
+        for (int i=0;i<Duration;i++){
+            bank.CountMonths(i);
+        }
+        double youHave = bank.getMoney();
+        
+        JOptionPane.showMessageDialog(null, youHave);
     }
 }
