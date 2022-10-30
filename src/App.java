@@ -5,18 +5,23 @@ public class App {
     public static void main(String[] args) throws Exception {
       
         int intrestRate = Integer.parseInt(JOptionPane.showInputDialog("Give '%'- per year of intrest (as Intiger number)"));
+
+        int interestRise = Integer.parseInt(JOptionPane.showInputDialog("what is interest rise every year ('%' as Intiger number)"));
        
         int valueRegularly = Integer.parseInt(JOptionPane.showInputDialog("Give value you transfer every month"));
 
-        int taxValue = Integer.parseInt(JOptionPane.showInputDialog("What is income tax?\nIn Poland intrest tax is 19%"));
+        int taxValue = Integer.parseInt(JOptionPane.showInputDialog("What is capital tax?\nIn Poland tax is 19%"));
     
-        String intrestDuration = JOptionPane.showInputDialog("For how long you deposit? (in months)\nif in years write y before value \nlike y2 - 2 years"); 
+        String intrestDuration = JOptionPane.showInputDialog("For how long you deposit? (in months)\nif in years write y before/after value \nlike 2y - 2 years"); 
         
 
         ConvertYearsToMonths convert = new ConvertYearsToMonths(intrestDuration);
         int Duration =  convert.ReturnConvertedValue();
 
-        JOptionPane.showMessageDialog(null, "You gonna pay: " +valueRegularly+"zl every month\nfor "+intrestRate+"%\nfor next "+Duration+" months\n"+"Tax is: "+taxValue+"% from income");
+       
+        
 
+        Bank transferValues = new Bank(valueRegularly,intrestRate,Duration,taxValue,interestRise);
+        
     }
 }
