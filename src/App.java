@@ -14,6 +14,6 @@ public class App {
 
         JOptionPane.showMessageDialog(null, "You gonna pay: " +valueRegularly+" every month\nfor "+intrestRate+"%\nfor next "+Duration+" months");
 
-        
+        System.out.println("DA");
     }
 }
