@@ -1,42 +1,48 @@
+
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 public class Bank {
     
     private double interest = 0;
     private double interestRise = 0;
-    private double expireTime = 0;
+    private int expireTime = 0;
     private int tax = 0;
     private int duration = 0;
-    private int steadyMoneyInpuy = 0;
-    protected float[][] arrayOfBonds = new float[3][3];
+    private int steadyMoneyInput = 0;
+    protected double budgetForThisMonth = 0.0;
+    ExpiredBondsReturn ConvertExpiredBonds = new ExpiredBondsReturn();
+    
+    protected float[][] arrayOfBonds = new float[112][3];
 
-    Bank(int steadyMoneyInpuy, double intrest, int duration,int tax, double interestRise, int expireTime){      
+    Bank(int steadyMoneyInput, double intrest, int duration,int tax, double interestRise, int expireTime){      
         this.interest = intrest;
         this.tax = tax;
         this.duration = duration;
-        this.steadyMoneyInpuy = steadyMoneyInpuy;
+        this.steadyMoneyInput = steadyMoneyInput;
         this.interestRise = interestRise;
         this.expireTime = expireTime;
         
         JOptionPane.showMessageDialog(null,
-        "You gonna pay: " +this.steadyMoneyInpuy+"zl every month\n"
+        "You gonna pay: " +this.steadyMoneyInput+"zl every month\n"
         +"for "+this.interest+"%+"+this.interestRise+"% every year\n"
-        +"with expire after:" +this.expireTime + "months\n"
+        +"with expire after:" +this.expireTime + " months\n"
         +"for next "+this.duration+" months\n"
-        +"Tax is: "+this.tax+"% from capital");
-        JOptionPane.showMessageDialog(null, arrayOfBonds[3][3]);
+        +"Tax is: "+this.tax+"% from interest");
     }
 
-    public float CountMonths() {
-
-        for(int i=0; i>duration; i++){
-
-
-
-
-        }
+    public void CountMonths(int currentMonth) {
+        this.budgetForThisMonth = this.budgetForThisMonth + steadyMoneyInput;
         
-        return 0;
+        ConvertExpiredBonds.ConvertExpiredBonds(this.arrayOfBonds , currentMonth,this.tax);
+
+
+
+
+
+    }
+    public double getMoney(){
+
+        return budgetForThisMonth;
     }
 
 }
