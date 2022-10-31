@@ -1,0 +1,7 @@
+array is build 
+array[n][0] = month when bond expires
+array[n][1] = money stored in that bond
+array[n][2] = % of interest
+n = number of bond
+
+formula to "buy" new bond = current month + time to expire 

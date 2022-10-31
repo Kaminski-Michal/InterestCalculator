@@ -11,11 +11,12 @@ public class Bank {
     private int steadyMoneyInput = 0;
     protected double budgetForThisMonth = 0.0;
     ExpiredBondsReturn ConvertExpiredBonds = new ExpiredBondsReturn();
+    AddInterest addInterest = new AddInterest();
     
     protected float[][] arrayOfBonds = new float[112][3];
 
-    Bank(int steadyMoneyInput, double intrest, int duration,int tax, double interestRise, int expireTime){      
-        this.interest = intrest;
+    Bank(int steadyMoneyInput, double interest, int duration,int tax, double interestRise, int expireTime){      
+        this.interest = interest;
         this.tax = tax;
         this.duration = duration;
         this.steadyMoneyInput = steadyMoneyInput;
@@ -33,8 +34,10 @@ public class Bank {
     public void CountMonths(int currentMonth) {
         this.budgetForThisMonth = this.budgetForThisMonth + steadyMoneyInput;
         
-        ConvertExpiredBonds.ConvertExpiredBonds(this.arrayOfBonds , currentMonth,this.tax);
-
+        addInterest.CalculateInterest(this.arrayOfBonds,currentMonth,this.expireTime,this.tax);
+        
+        ConvertExpiredBonds.ConvertExpiredBonds(this.arrayOfBonds , currentMonth,this.expireTime);
+        
 
 
 
