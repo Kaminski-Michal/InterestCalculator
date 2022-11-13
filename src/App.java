@@ -1,3 +1,4 @@
+import javax.lang.model.type.IntersectionType;
 import javax.swing.JOptionPane;
 
 
@@ -10,12 +11,20 @@ public class App {
         int taxValue = Integer.parseInt(JOptionPane.showInputDialog("What is capital tax?\nIn Poland tax is 19%"));
         String expireTime = JOptionPane.showInputDialog("What is expire time for 1 Bound? (in months)\nif in years write y before/after value \nlike 1y - 1 year");
 
+interestRate = 7;
+interestRise = 1;
+valueRegularly = 1000;
+taxValue = 19;
+expireTime = "4y";
+
         ConvertYearsToMonths convertExpireTime = new ConvertYearsToMonths(expireTime);
         int timeToExpire = convertExpireTime.ReturnConvertedValue();
 
 
         String interestDuration = JOptionPane.showInputDialog("For how long you plan to invest? (in months)\nif in years write y before/after value \nlike 2y - 2 years"); 
-        
+
+interestDuration = "24y";        
+
         ConvertYearsToMonths convert = new ConvertYearsToMonths(interestDuration);
         int Duration =  convert.ReturnConvertedValue();
 
@@ -23,11 +32,11 @@ public class App {
 
 
 
-        for (int i=0;i<Duration;i++){
+        for (int i=1;i<Duration+1;i++){
             bank.CountMonths(i);
         }
         double youHave = bank.getMoney();
         
-        JOptionPane.showMessageDialog(null, youHave);
+        JOptionPane.showMessageDialog(null, "You paid:"+ youHave);
     }
 }

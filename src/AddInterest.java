@@ -7,7 +7,7 @@ public class AddInterest {
     private double earnFromThisBond = 0;
     public double CalculateInterest(float[][] arrayOfBonds,double currentMonth,int expireTime,int tax){
 
-        for (int i = 0; i<(currentMonth+expireTime); i++){
+        for (int i = 0; i< arrayOfBonds.length; i++){
             
             if (arrayOfBonds[i][0] == currentMonth){
                 taxTaken = ((arrayOfBonds[i][1]*arrayOfBonds[i][2]/100) * tax/100);
