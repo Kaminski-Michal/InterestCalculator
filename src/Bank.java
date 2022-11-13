@@ -29,6 +29,7 @@ public class Bank {
         +"for "+this.interest+"%+"+this.interestRise+"% every year\n"
         +"with expire after:" +this.expireTime + " months\n"
         +"for next "+this.duration+" months\n"
+        +"price for 1 bound is:"+this.priceOfOneBound+"zl\n"
         +"Tax is: "+this.tax+"% from interest");
     }
 
