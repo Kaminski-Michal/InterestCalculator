@@ -20,5 +20,10 @@ public class AddInterest {
 
         return valueToReturn;
     }
-
+    
+    double getValueFromTax(){
+        
+        return takenInTax;
+    }
+    
 }

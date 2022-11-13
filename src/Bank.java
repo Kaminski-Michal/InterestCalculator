@@ -5,6 +5,7 @@ public class Bank {
     
     private double interest = 0;
     private double interestRise = 0;
+    private double priceOfOneBound = 0;
     private int expireTime = 0;
     private int tax = 0;
     private int duration = 0;
@@ -14,13 +15,14 @@ public class Bank {
     AddInterest addInterest = new AddInterest();
     
     
-    Bank(int steadyMoneyInput, double interest, int duration,int tax, double interestRise, int expireTime){      
+    Bank(int steadyMoneyInput, double interest, int duration,int tax, double interestRise, int expireTime, double priceOfOneBound){      
         this.interest = interest;
         this.tax = tax;
         this.duration = duration;
         this.steadyMoneyInput = steadyMoneyInput;
         this.interestRise = interestRise;
         this.expireTime = expireTime;
+        this.priceOfOneBound = priceOfOneBound;
         
         JOptionPane.showMessageDialog(null,
         "You gonna pay: " +this.steadyMoneyInput+"zl every month\n"
@@ -52,7 +54,7 @@ public class Bank {
             }
         }
 
-        return arrayOfBonds;
+        return NewArray;
     }
     
     public void CountMonths(int currentMonth) {
