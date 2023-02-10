@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Set;
+
 public class AddInterest {
     
     private double valueToReturn = 0;
@@ -5,17 +8,20 @@ public class AddInterest {
 
     private double taxTaken = 0;
     private double earnFromThisBond = 0;
-    public double CalculateInterest(float[][] arrayOfBonds,double currentMonth,int expireTime,int tax){
+    public double CalculateInterest(HashMap <Integer, float[]> arrayOfBonds,double currentMonth,int tax){
+        Set<Integer>positionInHashMap = arrayOfBonds.keySet();
 
-        for (int i = 0; i< arrayOfBonds.length; i++){
-            
-            if (arrayOfBonds[i][0] == currentMonth){
-                taxTaken = ((arrayOfBonds[i][1]*arrayOfBonds[i][2]/100) * tax/100);
-                earnFromThisBond = ((arrayOfBonds[i][1]*arrayOfBonds[i][2] / 100)-taxTaken);
+
+        for (Integer keyForMonthOfBond : positionInHashMap){
+            float[] specificMonthBond = arrayOfBonds.get(keyForMonthOfBond);
+            if (keyForMonthOfBond % 12 == currentMonth % 12){
+                taxTaken=((specificMonthBond[0]*specificMonthBond[1]/100)*tax/100);
+                earnFromThisBond=((specificMonthBond[0]*specificMonthBond[1]/100)-taxTaken);
+                takenInTax += taxTaken;
+                valueToReturn += earnFromThisBond;
             }
 
-            takenInTax =+ taxTaken;
-            valueToReturn =+ earnFromThisBond;
+            
         }
 
         return valueToReturn;

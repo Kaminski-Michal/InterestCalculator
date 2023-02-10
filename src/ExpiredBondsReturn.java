@@ -1,20 +1,23 @@
 import java.util.Arrays;
-import java.util.function.DoubleBinaryOperator;
+import java.util.HashMap;
+import java.util.Set;
+
 
 public class ExpiredBondsReturn {
     double valueToReturn =0;
 
-    public double ConvertExpiredBonds(float[][] arrayOfBonds,int currentMonth,int expireTime){
-
+    public double ConvertExpiredBonds(HashMap <Integer, float[]> arrayOfBonds,int currentMonth){
         valueToReturn = 0;
-        for(int i = currentMonth;i< arrayOfBonds.length ; i++){
-            
-            if(arrayOfBonds[i][0] == currentMonth){
+        Set<Integer>positionInHashMap = arrayOfBonds.keySet();
 
-                valueToReturn += arrayOfBonds[i][1]; //! add basic value
+        for (Integer keyForMonthBond : positionInHashMap){
+            if (keyForMonthBond == currentMonth){
+                float[] specificMonthBond = arrayOfBonds.get(keyForMonthBond);
+                valueToReturn += specificMonthBond[1]; 
+                arrayOfBonds.remove(keyForMonthBond);
             }
-            
         }
+
         return valueToReturn;
     }
 }

@@ -1,6 +1,8 @@
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.swing.JOptionPane;
-import java.util.Arrays;
 public class Bank {
     
     private double interest = 0;
@@ -33,41 +35,17 @@ public class Bank {
         +"Tax is: "+this.tax+"% from interest");
     }
 
-    public float[][] resize(float[][] arrayOfBonds,boolean sizeUp,int rowToIgnore){
-        int sizeChange = 0;
-        
-        if(sizeUp){
-            sizeChange = 1;
-        }
-        else{
-            sizeChange = -1;
-        }
-        
-        float[][] NewArray = new float[arrayOfBonds.length + sizeChange][3];
 
-        for(int i = 0;i<arrayOfBonds.length;i++){
-        
-            if(!sizeUp && i == rowToIgnore){}
-            else {
-                NewArray[i][0] = arrayOfBonds[i][0];
-                NewArray[i][1] = arrayOfBonds[i][1];
-                NewArray[i][2] = arrayOfBonds[i][2];
-            }
-        }
+    private HashMap <Integer, float[]> ListOfBonds = new HashMap<>();
 
-        return NewArray;
-    }
-    
     public void CountMonths(int currentMonth) {
-        this.budgetForThisMonth = this.budgetForThisMonth + steadyMoneyInput;
-        float[][] arrayOfBonds = new float[1000][3];
-        
-        addInterest.CalculateInterest(arrayOfBonds,currentMonth,this.expireTime,this.tax);
-        
-        ConvertExpiredBonds.ConvertExpiredBonds(arrayOfBonds , currentMonth,this.expireTime);
 
-        BuyNewBounds BuyNew = new BuyNewBounds(currentMonth, this.budgetForThisMonth, this.expireTime);
-        
+        this.budgetForThisMonth = this.budgetForThisMonth + steadyMoneyInput;        
+
+        addInterest.CalculateInterest(ListOfBonds,currentMonth,this.tax);
+        ConvertExpiredBonds.ConvertExpiredBonds(ListOfBonds , currentMonth);
+        BuyNewBounds BuyNew = new BuyNewBounds(ListOfBonds, currentMonth, this.budgetForThisMonth, this.expireTime, this.priceOfOneBound);
+        budgetForThisMonth = BuyNew.changeAfterBuyingBonds();
 
     }
     public double getMoney(){

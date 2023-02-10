@@ -4,8 +4,18 @@ array[n][1] = money stored in that bond
 array[n][2] = % of interest
 n = number of bond
 
+after rework all bonds are stored in HashMap of floats[] 
+so hashing is by month of expire and positions in float[n] 
+
+
+
+float[0] = money stored in that bond
+float[1] = % of interest
+
 formula to "buy" new bond = current month + time to expire 
 
 Mistake in checking and adding interest from bonds in date(now it only add interest if bond is about to expire) not every year(or value user gives) when it should 
 Need function to resize array after bond expire and add money saved in bonds to balance 
 Need function to "buy" new bonds = length + 1 and New array [length+1][0] = month + expire time 
+
+

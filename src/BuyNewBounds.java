@@ -1,22 +1,23 @@
+import java.util.HashMap;
+
 public class BuyNewBounds {
-    
-    int currentMonth = 0;
-    double budgetForThisMonth = 0;
-    int expireTime = 0;
+    private int amountOfBoundsYouCanBuyNow = 0;
+    private double restAfterBought =0;
     
     
-    BuyNewBounds(int currentMonth, double budgetForThisMonth, int expireTime){
+    BuyNewBounds(HashMap <Integer, float[]> ListOfBonds, int currentMonth, double budgetForThisMonth, int expireTime, double priceOfOneBound){
 
-        this.currentMonth = currentMonth;
-        this.budgetForThisMonth = budgetForThisMonth;
-        this.expireTime = expireTime;
-    
-    }
-    
-    public float[][] BuyNew(){
-
-
-        return null;
+        if(budgetForThisMonth >= priceOfOneBound){
+            amountOfBoundsYouCanBuyNow = (int)(budgetForThisMonth/priceOfOneBound);
+            restAfterBought = budgetForThisMonth - (amountOfBoundsYouCanBuyNow*priceOfOneBound);
+        }
     }
 
+    public double changeAfterBuyingBonds(){
+        return restAfterBought;
+    }
+    public double youBoughtThisMany(){
+
+        return 0;
+    }
 }
