@@ -1,5 +1,5 @@
-import java.util.HashMap;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class AddInterest {
     
@@ -8,9 +8,9 @@ public class AddInterest {
 
     private double taxTaken = 0;
     private double earnFromThisBond = 0;
-    public double CalculateInterest(HashMap <Integer, float[]> arrayOfBonds,double currentMonth,int tax){
+    public double CalculateInterest(ConcurrentHashMap <Integer, float[]> arrayOfBonds,double currentMonth,int tax,double interestRise){
         Set<Integer>positionInHashMap = arrayOfBonds.keySet();
-
+        this.valueToReturn = 0;
 
         for (Integer keyForMonthOfBond : positionInHashMap){
             float[] specificMonthBond = arrayOfBonds.get(keyForMonthOfBond);
@@ -18,18 +18,15 @@ public class AddInterest {
                 taxTaken=((specificMonthBond[0]*specificMonthBond[1]/100)*tax/100);
                 earnFromThisBond=((specificMonthBond[0]*specificMonthBond[1]/100)-taxTaken);
                 takenInTax += taxTaken;
-                valueToReturn += earnFromThisBond;
+                this.valueToReturn += earnFromThisBond;
+                specificMonthBond[1]=specificMonthBond[1]+(float)interestRise;
             }
-
-            
         }
 
-        return valueToReturn;
+        return this.valueToReturn;
     }
-    
     double getValueFromTax(){
         
         return takenInTax;
     }
-    
 }

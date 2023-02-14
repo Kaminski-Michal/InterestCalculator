@@ -6,11 +6,11 @@ public class App {
         double interestRate = 7.0;
         double interestRise = 1.0;
         int valueRegularly = 1000;
-        int youSpend =0;
         double priceOfOneBound = 100;
         int taxValue = 19;
         String expireTime = "4y";
-        String interestDuration ="24y";
+        String interestDuration ="6y";
+        double spend=0;
 
         /*
          interestRate = Double.parseDouble(JOptionPane.showInputDialog("Give '%'- per year of interest (as Double number)"));
@@ -32,11 +32,16 @@ public class App {
         Bank bank = new Bank(valueRegularly,interestRate,Duration,taxValue,interestRise, timeToExpire,priceOfOneBound);
 
         for (int i=1;i<Duration+1;i++){
+            spend +=valueRegularly;
             bank.CountMonths(i);
+
         }
-        double afterAllYouHave = bank.getMoney();
-        
-        JOptionPane.showMessageDialog(null, "after all months you have:"+ afterAllYouHave + " of change\n"+
-        "You spend: "+priceOfOneBound * Duration +" of your money ");
+        double afterAllRestIs = bank.getMoney();
+        double stackedInBonds = bank.moneyStackedInBonds();
+        double earnAfterInvestment= (stackedInBonds + afterAllRestIs);
+        JOptionPane.showMessageDialog(null, String.format("after all months you have: %.2f of change\n"+
+        "You spend: %,.2f of your money\n"+
+        "in bonds you have %,.2f\n"+
+        "that mean you got extra: %,.2f after investment",afterAllRestIs, spend, stackedInBonds,earnAfterInvestment));
     }
 }
