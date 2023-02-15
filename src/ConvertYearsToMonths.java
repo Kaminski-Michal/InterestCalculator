@@ -1,4 +1,3 @@
-
 public class ConvertYearsToMonths {
     int returnValueInMonths = 0;
     ConvertYearsToMonths(String yearsToConvert){
@@ -14,7 +13,5 @@ public class ConvertYearsToMonths {
 
     public int ReturnConvertedValue(){
         return returnValueInMonths;
-        
     }
-
 }
